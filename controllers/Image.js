@@ -10,6 +10,16 @@ const uploadImage = (req, res) => {
     });
 }
 
+const getImagePage = (req, res) => {
+    ImageServices.read(req.params.id)
+        .then(response => {
+            res.render('photo',{image:response});
+        }).catch(err => {
+            res.status(500).send("Hata Oldu : " + err);
+        })
+}
+
 module.exports = {
-    uploadImage
+    uploadImage,
+    getImagePage
 }

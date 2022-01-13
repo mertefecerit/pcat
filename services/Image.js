@@ -9,7 +9,12 @@ const readAll = async () => {
     return await ImageModel.find();
 }
 
+const read = async (id) => {
+    return await ImageModel.findById(id);
+}
+
 module.exports = {
     insert,
-    readAll
+    readAll,
+    read
 }
