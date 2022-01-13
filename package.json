@@ -1,0 +1,36 @@
+{
+  "name": "pcat",
+  "version": "1.0.0",
+  "description": "PCAT Management System",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mertefecerit/pcat.git"
+  },
+  "keywords": [
+    "management",
+    "system",
+    "nodejs",
+    "express"
+  ],
+  "author": "Mert Efe Cerit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mertefecerit/pcat/issues"
+  },
+  "homepage": "https://github.com/mertefecerit/pcat#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "prettier": "2.5.1"
+  },
+  "dependencies": {
+    "dotenv": "^11.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-ejs-layouts": "^2.5.1",
+    "mongoose": "^6.1.6"
+  }
+}

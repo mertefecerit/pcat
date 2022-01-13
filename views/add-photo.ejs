@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-4">
+            <div class="rounded bg-light shadow-sm border p-2 my-2">
+                <form action="/image/add" method="POST" enctype="multipart/form-data">
+                    <h5 class="text-center"><i class="fas fa-image"></i> RESİM YÜKLEME</h5>
+                    <input name="title" type="text" class="form-control mb-2" placeholder="Image Title">
+                    <textarea name="desc" class="form-control mb-2" cols="30" rows="10" placeholder="Image Description"></textarea>
+                    <input type="file" name="image">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-danger fw-bold"><i class="fas fa-save"></i> Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
