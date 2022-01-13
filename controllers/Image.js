@@ -1,6 +1,13 @@
+const ImageServices = require('../services/Image');
+
 const uploadImage = (req, res) => {
-    console.log(req.body);
-    res.status(200).send('ok');
+    req.body.image = req.file.filename;
+    ImageServices.insert(req.body)
+    .then(()=>{
+        res.redirect('/');
+    }).catch(err => {
+        res.status(500).send('Hata Oldu : ' + err);
+    });
 }
 
 module.exports = {

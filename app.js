@@ -4,6 +4,7 @@ const expressLayouts = require('express-ejs-layouts');
 const { PublicRoutes, ImageRoutes } = require('./router');
 const loaders = require('./loaders');
 const config = require('./config');
+const path = require('path');
 
 config();
 loaders();
@@ -17,12 +18,7 @@ app.set('view engine', 'ejs');
 // Middlewares
 app.use(express.static('public'));
 app.use(expressLayouts);
-app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
+app.use(express.urlencoded({extended: true}));
 
 // Routes
 app.use('/', PublicRoutes);
