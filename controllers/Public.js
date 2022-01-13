@@ -1,5 +1,10 @@
+const ImageService = require('../services/Image');
+
 const index = (req, res) => {
-  res.render('index');
+  const images = ImageService.readAll();
+  images.then(response => {
+    res.render('index',{images:response})
+  });
 };
 const about = (req, res) => {
   res.render('about');

@@ -4,7 +4,6 @@ const expressLayouts = require('express-ejs-layouts');
 const { PublicRoutes, ImageRoutes } = require('./router');
 const loaders = require('./loaders');
 const config = require('./config');
-const path = require('path');
 
 config();
 loaders();
