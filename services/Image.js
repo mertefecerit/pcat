@@ -21,10 +21,20 @@ const deleteOne = async (id) => {
     return await ImageModel.findByIdAndDelete(id);
 }
 
+const paginateImage = async (pageNumber) => {
+    return await ImageModel.find().skip((pageNumber-1) * 2).limit(2);
+}
+
+const totalImages = async () => {
+    return await ImageModel.countDocuments();
+}
+
 module.exports = {
     insert,
     readAll,
     read,
     update,
-    deleteOne
+    deleteOne,
+    paginateImage,
+    totalImages
 }
