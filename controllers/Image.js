@@ -11,6 +11,7 @@ const uploadImage = (req, res) => {
 }
 
 const getImagePage = (req, res) => {
+    console.log(req.baseUrl);
     ImageServices.read(req.params.id)
         .then(response => {
             res.render('photo',{image:response});
@@ -19,7 +20,16 @@ const getImagePage = (req, res) => {
         })
 }
 
+const imageEditPage = (req, res) =>{
+    ImageServices.read(req.params.id)
+        .then(response => {
+            res.render('photo-edit',{image:response});
+        }).catch(err => {
+            res.status(500).send("Hata Oldu : " + err);
+        });
+} 
 module.exports = {
     uploadImage,
-    getImagePage
+    getImagePage,
+    imageEditPage
 }
