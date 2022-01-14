@@ -13,8 +13,13 @@ const read = async (id) => {
     return await ImageModel.findById(id);
 }
 
+const update = async (payload, id) => {
+    return await ImageModel.findByIdAndUpdate(id, payload);
+}
+
 module.exports = {
     insert,
     readAll,
-    read
+    read,
+    update
 }

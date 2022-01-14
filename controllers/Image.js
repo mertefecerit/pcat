@@ -11,7 +11,6 @@ const uploadImage = (req, res) => {
 }
 
 const getImagePage = (req, res) => {
-    console.log(req.baseUrl);
     ImageServices.read(req.params.id)
         .then(response => {
             res.render('photo',{image:response});
@@ -28,8 +27,24 @@ const imageEditPage = (req, res) =>{
             res.status(500).send("Hata Oldu : " + err);
         });
 } 
+
+const updateImage = (req, res) => {
+    if(req.file && req.body.image !== '') {
+        req.body.image = req.file.filename;
+    }else{
+        delete req.body.image;
+    }
+    ImageServices.update(req.body, req.params.id)
+        .then(() => {
+            res.redirect('/');
+        }).catch(err => {
+            res.status(500).send("Hata Oldu : " + err);
+        });
+}
+
 module.exports = {
     uploadImage,
     getImagePage,
-    imageEditPage
+    imageEditPage,
+    updateImage
 }
