@@ -17,9 +17,14 @@ const update = async (payload, id) => {
     return await ImageModel.findByIdAndUpdate(id, payload);
 }
 
+const deleteOne = async (id) => {
+    return await ImageModel.findByIdAndDelete(id);
+}
+
 module.exports = {
     insert,
     readAll,
     read,
-    update
+    update,
+    deleteOne
 }

@@ -1,4 +1,6 @@
 const ImageServices = require('../services/Image');
+const fs = require('fs');
+const path = require('path');
 
 const uploadImage = (req, res) => {
     req.body.image = req.file.filename;
@@ -13,7 +15,8 @@ const uploadImage = (req, res) => {
 const getImagePage = (req, res) => {
     ImageServices.read(req.params.id)
         .then(response => {
-            res.render('photo',{image:response});
+            if(response) return res.render('photo',{image:response});
+            res.status(404).send('404');
         }).catch(err => {
             res.status(500).send("Hata Oldu : " + err);
         })
@@ -42,9 +45,22 @@ const updateImage = (req, res) => {
         });
 }
 
+const deleteImage = (req, res) => {
+    ImageServices.deleteOne(req.params.id)
+    .then(response => {
+        fs.unlink(path.resolve(__dirname,'../','public/uploads/'+response.image), (err) => {
+            if (err) throw err;
+            res.redirect('/');
+        });
+    }).catch(err => {
+        res.status(500).send("Hata Oldu : " + err);
+    });
+}
+
 module.exports = {
     uploadImage,
     getImagePage,
     imageEditPage,
-    updateImage
+    updateImage,
+    deleteImage
 }

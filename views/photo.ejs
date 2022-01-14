@@ -11,7 +11,7 @@
                         <p><%= image.desc %> </p>
                     </div>
                     <div class="d-flex justify-content-end mt-2">
-                        <form action="">
+                        <form action="delete/<%= image.id %>" method="post">
                             <a href="/" class="btn btn-primary fw-bold"><i class="fas fa-arrow-circle-left"></i> Geri</a>
                             <a href="edit/<%= image.id %>" class="btn btn-success fw-bold"><i class="fas fa-edit"></i> Edit</a>
                             <button class="btn btn-danger fw-bold"><i class="fas fa-trash"></i> Sil</button>
